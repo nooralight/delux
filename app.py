@@ -170,7 +170,7 @@ def send_msg():
                         media_url = pic_url,
                         to=number
                     )
-                return "okay"
+                return redirect("/")
             else:
                 for number in selected_checkboxes:
                     message_created=client.messages.create(
@@ -179,9 +179,8 @@ def send_msg():
                         to=number
                     )
                 return redirect("/")    
-    else:
-        users = User.objects()
-        return render_template("message.html",users=users)
+    users = User.objects()
+    return render_template("message.html",users=users)
     # if request.method == 'POST':
     #     message = request.form['message']
     #     users = User.objects()
